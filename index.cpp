@@ -91,14 +91,14 @@ void calculoTotalArticulo (costoPorArticulo *articulos){
 void factura(costoPorArticulo *articulos){
     
     //INTENTO DE GENERARAR UN CUADRO PARA LA FACTURA
-    cout << "------------------------------------SU FACTURA------------------------------------"<<endl;
-    cout << "----------------------------------------------------------------------------------"<<endl;
-    cout << "PRODUCTO-------------|" <<"CANTIDAD-----------|"<<"PRECIO (USD)-------|"<<"PRECIO TOTAl (USD)-|"<<endl;  
+    cout << "-------------------------------------SU FACTURA------------------------------------"<<endl;
+    cout << "-----------------------------------------------------------------------------------"<<endl;
+    cout << "|PRODUCTO-------------|" <<"CANTIDAD-----------|"<<"PRECIO (USD)-------|"<<"PRECIO TOTAl (USD)-|"<<endl;  
     for(int i = 0; i<*cant; i++){
         
         //LLAMO A LA FUNCION llenarCadena(), para generar un cuadro perfectamente calculado
         //Y SE ENVIA CADA VALOR DE LA ESTRUCTURA (NOMBRE, CANTIDAD, PRECIO, TOTAL)  
-        cout << llenarCadena(22,articulos[i].nombreArticulo);
+        cout <<"|"<< llenarCadena(22,articulos[i].nombreArticulo);
             /*
                 Se envia como parametro to_string() para convertir 
                 numeros int o float hacia string, sin embargo, con 
@@ -109,7 +109,7 @@ void factura(costoPorArticulo *articulos){
         cout << llenarCadena(20,to_string(articulos[i].total))<<endl;
         
     }
-    cout << "----------------------------------------------------------------------------------"<<endl<<endl;
+    cout << "-----------------------------------------------------------------------------------"<<endl<<endl;
 
 }
 
@@ -118,12 +118,12 @@ string llenarCadena(int cantidadF, string cadena){
     
     string salida = " "+cadena;
     //El número 2 ahí hacer cuadrar las casillas con los bordes de las columnas
-    int tamano = cadena.length()-2;
+    int tamano = cadena.length();
     /*
         Agrega espacios a cada cadena para generar una
         casilla de un cuadro de la factura 
     */
-    for(int i = tamano; i < cantidadF; i++){
+    for(int i = tamano; i < cantidadF-2; i++){
         salida += " ";
     }
     //Limites de la casilla
