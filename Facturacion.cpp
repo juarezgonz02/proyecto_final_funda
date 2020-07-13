@@ -19,7 +19,7 @@ struct costoPorArticulo{
 void agregarArticulos(costoPorArticulo*);
 void calculoTotalArticulo(costoPorArticulo*);
 void factura(costoPorArticulo*);
-string llenarCadena(int,string);
+string generarCasilla(int,string);
 float total (costoPorArticulo*);
 
 
@@ -96,17 +96,17 @@ void factura(costoPorArticulo *articulos){
     cout << "|PRODUCTO-------------|" <<"CANTIDAD-----------|"<<"PRECIO (USD)-------|"<<"PRECIO TOTAl (USD)-|"<<endl;  
     for(int i = 0; i<*cant; i++){
         
-        //LLAMO A LA FUNCION llenarCadena(), para generar un cuadro perfectamente calculado
+        //LLAMO A LA FUNCION generarCasilla(), para generar un cuadro perfectamente calculado
         //Y SE ENVIA CADA VALOR DE LA ESTRUCTURA (NOMBRE, CANTIDAD, PRECIO, TOTAL)  
-        cout <<"|"<< llenarCadena(22,articulos[i].nombreArticulo);
+        cout <<"|"<< generarCasilla(22,articulos[i].nombreArticulo);
             /*
                 Se envia como parametro to_string() para convertir 
                 numeros int o float hacia string, sin embargo, con 
                 los tipo float genera 0´s extra  
             */
-        cout << llenarCadena(20,to_string(articulos[i].cantidad));
-        cout << llenarCadena(20,to_string(articulos[i].precio));
-        cout << llenarCadena(20,to_string(articulos[i].total))<<endl;
+        cout << generarCasilla(20,to_string(articulos[i].cantidad));
+        cout << generarCasilla(20,to_string(articulos[i].precio));
+        cout << generarCasilla(20,to_string(articulos[i].total))<<endl;
         
     }
     cout << "-----------------------------------------------------------------------------------"<<endl<<endl;
@@ -114,7 +114,7 @@ void factura(costoPorArticulo *articulos){
 }
 
 //ESTA FUNCION ES COMPLETAMENTE CON UN FIN ESTETICO
-string llenarCadena(int cantidadF, string cadena){
+string generarCasilla(int cantidadF, string cadena){
     
     string salida = " "+cadena;
     //El número 2 ahí hacer cuadrar las casillas con los bordes de las columnas
